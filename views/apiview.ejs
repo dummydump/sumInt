@@ -1,0 +1,4167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CupCakeCRM 2.0</title>
+    <meta name="google-site-verification" content="an4lWPCYm7C-0A-QoUWYXWf7iL4r7giqzYP3JMkS9UU" />
+</head>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript"></script>
+<script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#report tr:odd").addClass("odd");
+        $("#report tr:not(.odd)").hide();
+        $("#report tr:first-child").show();
+
+        $("#report tr.odd").click(function () {
+            $(this).next("tr").toggle();
+            $(this).find(".arrow").toggleClass("up");
+        });
+        $(".hostName").html(window.location.host);
+
+        var cnt = 1;
+        $('tr.api-row').each(function () {
+            var currentElement = $(this);
+            $(this).closest('tr').children('td:first').text(cnt);
+            cnt++;
+        });
+
+    });
+</script>
+
+<div class="featured">
+    <table class="table table-bordered table-hover">
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td><b>cupCakeCRM API HELP</b></td>
+        </tr>
+    </table>
+
+    <div style="height:10px;"></div>
+    <table id="report">
+        <tr style="border-radius: 5px;">
+            <th style="width: 1%;">No</th>
+            <th style="width: 5%;">Method</th>
+            <th style="width: 70%;">Url<b style="float: right; font-family: Verdana; "></b></th>
+            <th style="width: 10%;">Model</th>
+        </tr>
+
+                <!-- To Add New User -->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/user/addUser</td>
+            <td class="module3">User</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Add new user</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/user/addUser</p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>email</td>
+                    <td>string</td>
+                    <td>Email of User (Required)</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>roleId</td>
+                    <td>string</td>
+                    <td>Role Id for new user</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>gender</td>
+                    <td>string</td>
+                    <td>Gender user</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>firstName</td>
+                    <td>string</td>
+                    <td>First name of user</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>lastName</td>
+                    <td>string</td>
+                    <td>Last name of user</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>phone1</td>
+                    <td>string</td>
+                    <td>Phone 1 of user</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>phone2</td>
+                    <td>string</td>
+                    <td>Phone 2 of user</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>address1</td>
+                    <td>string</td>
+                    <td>Address 1 of user</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>address2</td>
+                    <td>string</td>
+                    <td>Address 2 of user</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>city</td>
+                    <td>string</td>
+                    <td>City of user</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>country</td>
+                    <td>string</td>
+                    <td>Country of user</td>
+                </tr>
+                <tr></tr>
+                
+            </table>
+        </td>
+
+        <!-- To Update User -->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/user/updateUserById/:id</td>
+            <td class="module3">User</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Update User</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/user/updateUserById/:d</p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>email</td>
+                    <td>string</td>
+                    <td>Email of User (Required)</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>roleId</td>
+                    <td>string</td>
+                    <td>Role Id for new user</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>gender</td>
+                    <td>string</td>
+                    <td>Gender user</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>firstName</td>
+                    <td>string</td>
+                    <td>First name of user</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>lastName</td>
+                    <td>string</td>
+                    <td>Last name of user</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>phone1</td>
+                    <td>string</td>
+                    <td>Phone 1 of user</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>phone2</td>
+                    <td>string</td>
+                    <td>Phone 2 of user</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>address1</td>
+                    <td>string</td>
+                    <td>Address 1 of user</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>address2</td>
+                    <td>string</td>
+                    <td>Address 2 of user</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>city</td>
+                    <td>string</td>
+                    <td>City of user</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>country</td>
+                    <td>string</td>
+                    <td>Country of user</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Get User By Id-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="get">GET</td>
+            <td>https://<span class="hostName"></span>/api/user/getUserById/:id</td>
+            <td class="module3">User</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Get User By Id</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/user/getUserById/:id
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>id</td>
+                    <td>string</td>
+                    <td>User's id</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Remove User By Id-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/user/removeUserById/:id</td>
+            <td class="module3">User</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Post User By Id</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/user/removeUserById/:id
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>id</td>
+                    <td>string</td>
+                    <td>User's id</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Get all Users-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/user/getUsers</td>
+            <td class="module3">User</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Get All Users</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/user/getUsers
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>limit</td>
+                    <td>string</td>
+                    <td>Limit value for paggination</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>pageCount</td>
+                    <td>string</td>
+                    <td>Page counter value for paggination</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!-- To Get Client Token -->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/client/getClientToken</td>
+            <td class="module1">Client</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To get Client Token</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/client/getClientToken</p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>email</td>
+                    <td>string</td>
+                    <td>Client's Email</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+        
+        <!-- To Add New Client -->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/client/addClient</td>
+            <td class="module1">Client</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Add new client</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/client/addClient</p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>firstName</td>
+                    <td>string</td>
+                    <td>First name of client (Required)</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>middleName</td>
+                    <td>string</td>
+                    <td>Middle name of client</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>lastName</td>
+                    <td>string</td>
+                    <td>Last name of client (Required)</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>nickName</td>
+                    <td>string</td>
+                    <td>Nick name of client</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>telephone</td>
+                    <td>string</td>
+                    <td>Telephone number of client</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>birthDate</td>
+                    <td>string</td>
+                    <td>Birth Date of client</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>anniversaryDate</td>
+                    <td>string</td>
+                    <td>Anniversary Date of client</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>agent</td>
+                    <td>string</td>
+                    <td>Agent of client</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>gender</td>
+                    <td>string</td>
+                    <td>Gender of client</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>mapAddress</td>
+                    <td>string</td>
+                    <td>Map Address of client</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>latitude</td>
+                    <td>string</td>
+                    <td>Latitude of client</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>longitude</td>
+                    <td>string</td>
+                    <td>Longitude of client</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>address1</td>
+                    <td>string</td>
+                    <td>Address1 of client</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>address2</td>
+                    <td>string</td>
+                    <td>Address2 of client</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>city</td>
+                    <td>string</td>
+                    <td>City of client</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>state</td>
+                    <td>string</td>
+                    <td>State of client</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>zipcode</td>
+                    <td>string</td>
+                    <td>Zipcode of client</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>clientTags</td>
+                    <td>Array of string</td>
+                    <td>Client Tags</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>contactDetails</td>
+                    <td>Array of Object of contact</td>
+                    <td>Client Contact Details</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>additionalNotes</td>
+                    <td>string</td>
+                    <td>Additional Notes</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>passportDetails</td>
+                    <td>Array of object</td>
+                    <td>Passport details</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!-- To Update Client -->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/client/updateClientById/:id</td>
+            <td class="module1">Client</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Update Client</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/client/updateClientById/:d</p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>firstName</td>
+                    <td>string</td>
+                    <td>First name of client (Required)</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>middleName</td>
+                    <td>string</td>
+                    <td>Middle name of client</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>lastName</td>
+                    <td>string</td>
+                    <td>Last name of client (Required)</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>nickName</td>
+                    <td>string</td>
+                    <td>Nick name of client</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>telephone</td>
+                    <td>string</td>
+                    <td>Telephone number of client</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>birthDate</td>
+                    <td>string</td>
+                    <td>Birth Date of client</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>anniversaryDate</td>
+                    <td>string</td>
+                    <td>Anniversary Date of client</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>agent</td>
+                    <td>string</td>
+                    <td>Agent of client</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>gender</td>
+                    <td>string</td>
+                    <td>Gender of client</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>mapAddress</td>
+                    <td>string</td>
+                    <td>Map Address of client</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>latitude</td>
+                    <td>string</td>
+                    <td>Latitude of client</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>longitude</td>
+                    <td>string</td>
+                    <td>Longitude of client</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>address1</td>
+                    <td>string</td>
+                    <td>Address1 of client</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>address2</td>
+                    <td>string</td>
+                    <td>Address2 of client</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>city</td>
+                    <td>string</td>
+                    <td>City of client</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>state</td>
+                    <td>string</td>
+                    <td>State of client</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>zipcode</td>
+                    <td>string</td>
+                    <td>Zipcode of client</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>clientTags</td>
+                    <td>Array of string</td>
+                    <td>Client Tags</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>contactDetails</td>
+                    <td>Array of Object of contact</td>
+                    <td>Client Contact Details</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>additionalNotes</td>
+                    <td>string</td>
+                    <td>Additional Notes</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>passportDetails</td>
+                    <td>Array of object</td>
+                    <td>Passport details</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Get Client By Id-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/client/getClientById/:id</td>
+            <td class="module1">Client</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Get Client By Id</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/client/getClientById/:id
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>id</td>
+                    <td>string</td>
+                    <td>Client's id</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Get all Clients-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/client/getClients</td>
+            <td class="module1">Client</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Get All Clients</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/client/getClients
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>limit</td>
+                    <td>string</td>
+                    <td>Limit value for paggination</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>pageCount</td>
+                    <td>string</td>
+                    <td>Page counter value for paggination</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Remove Client By Id-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/client/removeClientById/:id</td>
+            <td class="module1">Client</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Remove Client By Id</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/client/removeClientById/:id
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>id</td>
+                    <td>string</td>
+                    <td>Client's Id</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Add Relative -->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/relative/addRelative</td>
+            <td class="module2">Relative</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Add New Relative</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/relative/addRelative
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>clientId</td>
+                    <td>string</td>
+                    <td>Client's id</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>relativeClientId</td>
+                    <td>string</td>
+                    <td>Relative Client's id</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>relation</td>
+                    <td>string</td>
+                    <td>Relationship name</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Update Relative -->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/relative/updateRelativeById/:id</td>
+            <td class="module2">Relative</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Update Relative</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/relative/updateRelativeById/:id
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>id</td>
+                    <td>string</td>
+                    <td>Relation Id</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>clientId</td>
+                    <td>string</td>
+                    <td>Client's id</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>relativeClientId</td>
+                    <td>string</td>
+                    <td>Relative Client's id</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>relation</td>
+                    <td>string</td>
+                    <td>Relationship name</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Remove Relative -->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/relative/removeRelativeById/:id</td>
+            <td class="module2">Relative</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Remove Relative</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/relative/removeRelativeById/:id
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>id</td>
+                    <td>string</td>
+                    <td>Relation Id</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+        <!-- To Add New Module -->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/module/addModule</td>
+            <td class="module4">Module</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Add new Module</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/module/addModule</p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>name</td>
+                    <td>string</td>
+                    <td>Name of module (Required)</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!-- To Update Module -->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/module/updateModuleById/:id</td>
+            <td class="module4">Module</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Update Module</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/module/updateModuleById/:d</p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>name</td>
+                    <td>string</td>
+                    <td>Name of module (Required)</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Get Module By Id-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="get">GET</td>
+            <td>https://<span class="hostName"></span>/api/module/getModuleById/:id</td>
+            <td class="module4">Module</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Get Module By Id</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/module/getModuleById/:id
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>id</td>
+                    <td>string</td>
+                    <td>Module's id</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Remove Module By Id-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/module/removeModuleById/:id</td>
+            <td class="module4">Module</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Post Module By Id</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/module/removeModuleById/:id
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>id</td>
+                    <td>string</td>
+                    <td>Module's id</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Get all Modules-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/module/getModules</td>
+            <td class="module4">Module</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Get All Modules</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/module/getModules
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>limit</td>
+                    <td>string</td>
+                    <td>Limit value for paggination</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>pageCount</td>
+                    <td>string</td>
+                    <td>Page counter value for paggination</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!-- To Add New Trip -->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/trip/addTrip</td>
+            <td class="module5">Trip</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Add new Trip</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/trip/addTrip</p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>tripType</td>
+                    <td>string</td>
+                    <td>Type of Trip</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>startDate</td>
+                    <td>string</td>
+                    <td>Start Date of Trip</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>endDate</td>
+                    <td>string</td>
+                    <td>End date of trip</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>agentId</td>
+                    <td>string</td>
+                    <td>Aggent Id</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>tripDescription</td>
+                    <td>string</td>
+                    <td>Description of trip</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>workspaceExtensions</td>
+                    <td>[Object]</td>
+                    <td>Workspace Extensions of trip</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>travelerDetails</td>
+                    <td>[Object]</td>
+                    <td>Travel Details</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>primary</td>
+                    <td>string</td>
+                    <td>Primary value of trip</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!-- To Update Trip -->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/trip/updateTripById/:id</td>
+            <td class="module5">Trip</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Update Trip</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/trip/updateTripById/:d</p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>tripType</td>
+                    <td>string</td>
+                    <td>Type of Trip</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>startDate</td>
+                    <td>string</td>
+                    <td>Start Date of Trip</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>endDate</td>
+                    <td>string</td>
+                    <td>End date of trip</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>agentId</td>
+                    <td>string</td>
+                    <td>Aggent Id</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>tripDescription</td>
+                    <td>string</td>
+                    <td>Description of trip</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>workspaceExtensions</td>
+                    <td>[Object]</td>
+                    <td>Workspace Extensions of trip</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>travelerDetails</td>
+                    <td>[Object]</td>
+                    <td>Travel Details</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>primary</td>
+                    <td>string</td>
+                    <td>Primary value of trip</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Get Trip By Id-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/trip/getTripById/:id</td>
+            <td class="module5">Trip</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Get Trip By Id</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/trip/getTripById/:id
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>id</td>
+                    <td>string</td>
+                    <td>Trip's id</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Remove Trip By Id-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/trip/removeTripById/:id</td>
+            <td class="module5">Trip</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Post Trip By Id</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/trip/removeTripById/:id
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>id</td>
+                    <td>string</td>
+                    <td>Trip's id</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Get all Trips-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/trip/getTrips</td>
+            <td class="module5">Trip</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Get All Trips</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/trip/getTrips
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>limit</td>
+                    <td>string</td>
+                    <td>Limit value for paggination</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>pageCount</td>
+                    <td>string</td>
+                    <td>Page counter value for paggination</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!-- To Add New Itinerary -->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/itinerary/addItinerary</td>
+            <td class="module6">Itinerary</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Add new Itinerary</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/itinerary/addItinerary</p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>templateName</td>
+                    <td>string</td>
+                    <td>Template Name id Itinerary (Required)</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>tripId</td>
+                    <td>string</td>
+                    <td>Trip Id</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>clientId</td>
+                    <td>string</td>
+                    <td>Client Id</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>flights</td>
+                    <td>[Object]</td>
+                    <td>Array of flight</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>properties</td>
+                    <td>[Object]</td>
+                    <td>Array of property</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>cruises</td>
+                    <td>[Object]</td>
+                    <td>Array of cruise</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>tours</td>
+                    <td>[Object]</td>
+                    <td>Array of Tour</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>trains</td>
+                    <td>[Object]</td>
+                    <td>Array of train</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>carRentals</td>
+                    <td>[Object]</td>
+                    <td>Array of Car Rental</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>groundTransfer</td>
+                    <td>[Object]</td>
+                    <td>Array of Ground Transfer</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!-- To Update Itinerary -->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/itinerary/updateItineraryById/:id</td>
+            <td class="module6">Itinerary</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Update Itinerary</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/itinerary/updateItineraryById/:d</p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>templateName</td>
+                    <td>string</td>
+                    <td>Template Name id Itinerary (Required)</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>tripId</td>
+                    <td>string</td>
+                    <td>Trip Id</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>clientId</td>
+                    <td>string</td>
+                    <td>Client Id</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>flights</td>
+                    <td>[Object]</td>
+                    <td>Array of flight</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>properties</td>
+                    <td>[Object]</td>
+                    <td>Array of property</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>cruises</td>
+                    <td>[Object]</td>
+                    <td>Array of cruise</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>tours</td>
+                    <td>[Object]</td>
+                    <td>Array of Tour</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>trains</td>
+                    <td>[Object]</td>
+                    <td>Array of train</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>carRentals</td>
+                    <td>[Object]</td>
+                    <td>Array of Car Rental</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Get Itinerary By Id-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="get">GET</td>
+            <td>https://<span class="hostName"></span>/api/itinerary/getItineraryById/:id</td>
+            <td class="module6">Itinerary</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Get Itinerary By Id</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/itinerary/getItineraryById/:id
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>id</td>
+                    <td>string</td>
+                    <td>Itinerary's id</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Remove Itinerary By Id-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/itinerary/removeItineraryById/:id</td>
+            <td class="module6">Itinerary</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Post Itinerary By Id</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/itinerary/removeItineraryById/:id
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>id</td>
+                    <td>string</td>
+                    <td>Itinerary's id</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Get all Itinerary-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/itinerary/getItineraries</td>
+            <td class="module6">Itinerary</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Get All Itineraries</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/itinerary/getItineraries
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>limit</td>
+                    <td>string</td>
+                    <td>Limit value for paggination</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>pageCount</td>
+                    <td>string</td>
+                    <td>Page counter value for paggination</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!-- To Add New Trip Activities -->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/tripactivity/addTripActivity</td>
+            <td class="module7">TripActivity</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Add new Trip Activities</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/tripactivity/addTripActivity</p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>tripId</td>
+                    <td>string</td>
+                    <td>Trip Id</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>activity</td>
+                    <td>string</td>
+                    <td>Activity</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>activityDate</td>
+                    <td>string</td>
+                    <td>Date of activity</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>activityTime</td>
+                    <td>string</td>
+                    <td>Time of activity</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>activityName</td>
+                    <td>string</td>
+                    <td>Name of activity</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>confirmationNumber</td>
+                    <td>string</td>
+                    <td>Confirmation Number</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>description</td>
+                    <td>string</td>
+                    <td>Description of trip activity</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!-- To Update Trip Activities -->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/tripactivity/updateTripActivityById/:id</td>
+            <td class="module7">TripActivity</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Update TripActivity</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/tripactivity/updateTripActivityById/:d</p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>tripId</td>
+                    <td>string</td>
+                    <td>Trip Id</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>activity</td>
+                    <td>string</td>
+                    <td>Activity</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>activityDate</td>
+                    <td>string</td>
+                    <td>Date of activity</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>activityTime</td>
+                    <td>string</td>
+                    <td>Time of activity</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>activityName</td>
+                    <td>string</td>
+                    <td>Name of activity</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>confirmationNumber</td>
+                    <td>string</td>
+                    <td>Confirmation Number</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>description</td>
+                    <td>string</td>
+                    <td>Description of trip activity</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Get Trip Activity By Id-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="get">GET</td>
+            <td>https://<span class="hostName"></span>/api/tripactivity/getTripActivityById/:id</td>
+            <td class="module7">TripActivity</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Get Trip Activity By Id</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/tripactivity/getTripActivityById/:id
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>id</td>
+                    <td>string</td>
+                    <td>Trip Actvity's id</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Remove TripActivity By Id-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/tripactivity/removeTripActivityById/:id</td>
+            <td class="module7">Trip Activity</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Post Trip Activity By Id</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/tripactivity/removeTripActivityById/:id
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>id</td>
+                    <td>string</td>
+                    <td>Trip Activity's id</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Get all Trip Activities-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/tripactivity/getTripActivities</td>
+            <td class="module7">TripActivity</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Get All Trip Activities</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/tripactivity/getTripActivities
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>limit</td>
+                    <td>string</td>
+                    <td>Limit value for paggination</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>pageCount</td>
+                    <td>string</td>
+                    <td>Page counter value for paggination</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!-- To Add New Booking -->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/booking/addBooking</td>
+            <td class="module8">Booking</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Add new Booking</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/booking/addBooking</p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>tripId</td>
+                    <td>string</td>
+                    <td>Trip Id</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>bookingNumber</td>
+                    <td>string</td>
+                    <td>Booking Number (Required)</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>groupBookingId</td>
+                    <td>string</td>
+                    <td>Group booking id</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>groupBookingNumber</td>
+                    <td>string</td>
+                    <td>Group Booking Number</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>bookingDate</td>
+                    <td>string</td>
+                    <td>Date of booking (Required)</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>tourOperatorId</td>
+                    <td>string</td>
+                    <td>Tour operator Id</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>startDate</td>
+                    <td>string</td>
+                    <td>Start Date</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>endDate</td>
+                    <td>string</td>
+                    <td>End Date</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>packagePrice</td>
+                    <td>string</td>
+                    <td>Package Price (Required)</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>commisionEarned</td>
+                    <td>string</td>
+                    <td>Commision Earned (Required)</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>alternateCommision</td>
+                    <td>string</td>
+                    <td>Alternate Commision</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>personalTravel</td>
+                    <td>string</td>
+                    <td>Personal Travel</td>
+                </tr>
+                <tr></tr>
+                
+                <tr>
+                    <td>commisionExpected</td>
+                    <td>string</td>
+                    <td>Expected Commision</td>
+                </tr>
+                <tr></tr>
+                
+                <tr>
+                    <td>agentName</td>
+                    <td>string</td>
+                    <td>Name of agent</td>
+                </tr>
+                <tr></tr>
+                
+                <tr>
+                    <td>bookingStatus</td>
+                    <td>string</td>
+                    <td>Booking status</td>
+                </tr>
+                <tr></tr>
+                
+                <tr>
+                    <td>description</td>
+                    <td>string</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                
+            </table>
+        </td>
+
+        <!-- To Update Booking -->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/booking/updateBookingById/:id</td>
+            <td class="module8">Booking</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Update Booking</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/booking/updateBookingById/:d</p>
+            <h5>Parameters :</h5>
+            <table>
+                 <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>tripId</td>
+                    <td>string</td>
+                    <td>Trip Id</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>bookingNumber</td>
+                    <td>string</td>
+                    <td>Booking Number (Required)</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>groupBookingId</td>
+                    <td>string</td>
+                    <td>Group booking id</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>groupBookingNumber</td>
+                    <td>string</td>
+                    <td>Group Booking Number</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>bookingDate</td>
+                    <td>string</td>
+                    <td>Date of booking (Required)</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>tourOperatorId</td>
+                    <td>string</td>
+                    <td>Tour operator Id</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>startDate</td>
+                    <td>string</td>
+                    <td>Start Date</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>endDate</td>
+                    <td>string</td>
+                    <td>End Date</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>packagePrice</td>
+                    <td>string</td>
+                    <td>Package Price (Required)</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>commisionEarned</td>
+                    <td>string</td>
+                    <td>Commision Earned (Required)</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>alternateCommision</td>
+                    <td>string</td>
+                    <td>Alternate Commision</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>personalTravel</td>
+                    <td>string</td>
+                    <td>Personal Travel</td>
+                </tr>
+                <tr></tr>
+                
+                <tr>
+                    <td>commisionExpected</td>
+                    <td>string</td>
+                    <td>Expected Commision</td>
+                </tr>
+                <tr></tr>
+                
+                <tr>
+                    <td>agentName</td>
+                    <td>string</td>
+                    <td>Name of agent</td>
+                </tr>
+                <tr></tr>
+                
+                <tr>
+                    <td>bookingStatus</td>
+                    <td>string</td>
+                    <td>Booking status</td>
+                </tr>
+                <tr></tr>
+                
+                <tr>
+                    <td>description</td>
+                    <td>string</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Get Booking By Id-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="get">GET</td>
+            <td>https://<span class="hostName"></span>/api/booking/getBookingById/:id</td>
+            <td class="module8">Booking</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Get Booking By Id</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/booking/getBookingById/:id
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>id</td>
+                    <td>string</td>
+                    <td>Booking's id</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Remove Booking By Id-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/booking/removeBookingById/:id</td>
+            <td class="module8">Booking</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Post Booking By Id</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/booking/removeBookingById/:id
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>id</td>
+                    <td>string</td>
+                    <td>Booking's id</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Get all Bookings-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/booking/getBookings</td>
+            <td class="module8">Booking</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Get All Bookings</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/booking/getBookings
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>limit</td>
+                    <td>string</td>
+                    <td>Limit value for paggination</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>pageCount</td>
+                    <td>string</td>
+                    <td>Page counter value for paggination</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!-- To Add New Payment -->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/payment/addPayment</td>
+            <td class="module10">Payment</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Add new Payment</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/payment/addPayment</p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>payeeClientId</td>
+                    <td>string</td>
+                    <td>Payee client Id (Required)</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>bookingNumber</td>
+                    <td>string</td>
+                    <td>Booking Number (Required)</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>paymentDate</td>
+                    <td>string</td>
+                    <td>Payment Date</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>paymentAmount</td>
+                    <td>string</td>
+                    <td>Payment amount</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>paymentType</td>
+                    <td>string</td>
+                    <td>Payment Type</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>clientCreditCard</td>
+                    <td>string</td>
+                    <td>Client Credit Card details</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>description</td>
+                    <td>string</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>paymentStatus</td>
+                    <td>string</td>
+                    <td>Payment status</td>
+                </tr>
+                <tr></tr>
+                
+            </table>
+        </td>
+
+        <!-- To Update Payment -->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/payment/updatePaymentById/:id</td>
+            <td class="module10">Payment</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Update Payment</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/payment/updatePaymentById/:d</p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>payeeClientId</td>
+                    <td>string</td>
+                    <td>Payee client Id (Required)</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>bookingNumber</td>
+                    <td>string</td>
+                    <td>Booking Number (Required)</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>paymentDate</td>
+                    <td>string</td>
+                    <td>Payment Date</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>paymentAmount</td>
+                    <td>string</td>
+                    <td>Payment amount</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>paymentType</td>
+                    <td>string</td>
+                    <td>Payment Type</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>clientCreditCard</td>
+                    <td>string</td>
+                    <td>Client Credit Card details</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>description</td>
+                    <td>string</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>paymentStatus</td>
+                    <td>string</td>
+                    <td>Payment status</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Get Payment By Id-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="get">GET</td>
+            <td>https://<span class="hostName"></span>/api/payment/getPaymentById/:id</td>
+            <td class="module10">Payment</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Get Payment By Id</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/payment/getPaymentById/:id
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>id</td>
+                    <td>string</td>
+                    <td>Payment's id</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Remove Payment By Id-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/payment/removePaymentById/:id</td>
+            <td class="module10">Payment</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Post Payment By Id</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/payment/removePaymentById/:id
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>id</td>
+                    <td>string</td>
+                    <td>Payment's id</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Get all Payments-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/payment/getPayments</td>
+            <td class="module10">Payments</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Get All Payments</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/payment/getPayments
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>limit</td>
+                    <td>string</td>
+                    <td>Limit value for paggination</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>pageCount</td>
+                    <td>string</td>
+                    <td>Page counter value for paggination</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+        
+        <!-- To Add New Document -->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/document/addDocument</td>
+            <td class="module11">Document</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Add new Document</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/document/addDocument</p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>fileName</td>
+                    <td>string</td>
+                    <td>File name of document</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>size</td>
+                    <td>string</td>
+                    <td>Size of document</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>uploadedDate</td>
+                    <td>string</td>
+                    <td>Uploaded Date</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>uploadedBy</td>
+                    <td>string</td>
+                    <td>Uploaded By</td>
+                </tr>
+                <tr></tr>
+                
+            </table>
+        </td>
+
+        <!-- To Update Document -->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/document/updateDocumentById/:id</td>
+            <td class="module11">Document</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Update Document</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/document/updateDocumentById/:d</p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>fileName</td>
+                    <td>string</td>
+                    <td>File name of document</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>size</td>
+                    <td>string</td>
+                    <td>Size of document</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>uploadedDate</td>
+                    <td>string</td>
+                    <td>Uploaded Date</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>uploadedBy</td>
+                    <td>string</td>
+                    <td>Uploaded By</td>
+                </tr>
+                <tr></tr>
+
+            </table>
+        </td>
+
+        <!--To Get Document By Id-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="get">GET</td>
+            <td>https://<span class="hostName"></span>/api/document/getDocumentById/:id</td>
+            <td class="module11">Document</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Get Document By Id</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/document/getDocumentById/:id
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>id</td>
+                    <td>string</td>
+                    <td>Document's id</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Remove Document By Id-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/document/removeDocumentById/:id</td>
+            <td class="module11">Document</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Post Document By Id</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/document/removeDocumentById/:id
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>id</td>
+                    <td>string</td>
+                    <td>Document's id</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Get all Documents-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/document/getDocuments</td>
+            <td class="module11">Document</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Get All Documents</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/document/getDocuments
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>limit</td>
+                    <td>string</td>
+                    <td>Limit value for paggination</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>pageCount</td>
+                    <td>string</td>
+                    <td>Page counter value for paggination</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!-- To Add New Note -->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/note/addNote</td>
+            <td class="module12">Note</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Add new Note</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/note/addNote</p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>note</td>
+                    <td>string</td>
+                    <td>Note details</td>
+                </tr>
+                <tr></tr>
+                
+                <tr>
+                    <td>noteDate</td>
+                    <td>string</td>
+                    <td>Note Date</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>addedBy</td>
+                    <td>string</td>
+                    <td>Added By</td>
+                </tr>
+                <tr></tr>
+                
+            </table>
+        </td>
+
+        <!-- To Update Note -->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/note/updateNoteById/:id</td>
+            <td class="module12">Note</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Update Note</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/note/updateNoteById/:d</p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>note</td>
+                    <td>string</td>
+                    <td>Note details</td>
+                </tr>
+                <tr></tr>
+                
+                <tr>
+                    <td>noteDate</td>
+                    <td>string</td>
+                    <td>Note Date</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>addedBy</td>
+                    <td>string</td>
+                    <td>Added By</td>
+                </tr>
+                <tr></tr>
+
+            </table>
+        </td>
+
+        <!--To Get Note By Id-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="get">GET</td>
+            <td>https://<span class="hostName"></span>/api/note/getNoteById/:id</td>
+            <td class="module12">Note</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Get Note By Id</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/note/getNoteById/:id
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>id</td>
+                    <td>string</td>
+                    <td>Note's id</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Remove Note By Id-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/note/removeNoteById/:id</td>
+            <td class="module12">Note</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Post Note By Id</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/note/removeNoteById/:id
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>id</td>
+                    <td>string</td>
+                    <td>Note's id</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Get all Notes-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/note/getNotes</td>
+            <td class="module12">Note</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Get All Notes</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/note/getNotes
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>limit</td>
+                    <td>string</td>
+                    <td>Limit value for paggination</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>pageCount</td>
+                    <td>string</td>
+                    <td>Page counter value for paggination</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!-- To Add New Task -->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/task/addTask</td>
+            <td class="module13">Task</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Add new Task</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/task/addTask</p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>subject</td>
+                    <td>string</td>
+                    <td>Note details</td>
+                </tr>
+                <tr></tr>
+                
+                <tr>
+                    <td>dueDate</td>
+                    <td>string</td>
+                    <td>Due Date</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>reminder</td>
+                    <td>string</td>
+                    <td>Remider</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>assignedTo</td>
+                    <td>string</td>
+                    <td>Assigned To user</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>description</td>
+                    <td>string</td>
+                    <td>Description of task</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>taskType</td>
+                    <td>string</td>
+                    <td>Task Type</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>taskStatus</td>
+                    <td>string</td>
+                    <td>Status of task</td>
+                </tr>
+                <tr></tr>
+                
+            </table>
+        </td>
+
+        <!-- To Update Task -->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/task/updateTaskById/:id</td>
+            <td class="module13">Task</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Update Task</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/task/updateTaskById/:d</p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>subject</td>
+                    <td>string</td>
+                    <td>Note details</td>
+                </tr>
+                <tr></tr>
+                
+                <tr>
+                    <td>dueDate</td>
+                    <td>string</td>
+                    <td>Due Date</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>reminder</td>
+                    <td>string</td>
+                    <td>Remider</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>assignedTo</td>
+                    <td>string</td>
+                    <td>Assigned To user</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>description</td>
+                    <td>string</td>
+                    <td>Description of task</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>taskType</td>
+                    <td>string</td>
+                    <td>Task Type</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>taskStatus</td>
+                    <td>string</td>
+                    <td>Status of task</td>
+                </tr>
+                <tr></tr>
+
+            </table>
+        </td>
+
+        <!--To Get Task By Id-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="get">GET</td>
+            <td>https://<span class="hostName"></span>/api/task/getTaskById/:id</td>
+            <td class="module13">Task</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Get Task By Id</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/task/getTaskById/:id
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>id</td>
+                    <td>string</td>
+                    <td>Task's id</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Remove Task By Id-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/task/removeTaskById/:id</td>
+            <td class="module13">Task</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Post Task By Id</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/task/removeTaskById/:id
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>id</td>
+                    <td>string</td>
+                    <td>Task's id</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Get all Tasks-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/task/getTasks</td>
+            <td class="module12">Task</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Get All Tasks</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/task/getTasks
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>limit</td>
+                    <td>string</td>
+                    <td>Limit value for paggination</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>pageCount</td>
+                    <td>string</td>
+                    <td>Page counter value for paggination</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+        
+        <!-- To Add New Tour Operators -->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/touroperator/addTourOperator</td>
+            <td class="module14">Tour Operator</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Add new Tour Operator</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/touroperator/addTourOperator</p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>name</td>
+                    <td>string</td>
+                    <td>Name of tour operator</td>
+                </tr>
+                <tr></tr>
+                
+                <tr>
+                    <td>telephone</td>
+                    <td>string</td>
+                    <td>Telephone number</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>email</td>
+                    <td>string</td>
+                    <td>Email</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>website</td>
+                    <td>string</td>
+                    <td>Website</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>owner</td>
+                    <td>string</td>
+                    <td>Owner</td>
+                </tr>
+                <tr></tr>
+                
+            </table>
+        </td>
+
+        <!-- To Update Tour Operator -->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/touroperator/updateTourOperatorById/:id</td>
+            <td class="module14">Tour Operator</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Update Tour Operator</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/touroperator/updateTourOperatorById/:d</p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>name</td>
+                    <td>string</td>
+                    <td>Name of tour operator</td>
+                </tr>
+                <tr></tr>
+                
+                <tr>
+                    <td>telephone</td>
+                    <td>string</td>
+                    <td>Telephone number</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>email</td>
+                    <td>string</td>
+                    <td>Email</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>website</td>
+                    <td>string</td>
+                    <td>Website</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>owner</td>
+                    <td>string</td>
+                    <td>Owner</td>
+                </tr>
+                <tr></tr>
+
+            </table>
+        </td>
+
+        <!--To Get Tour Operator By Id-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="get">GET</td>
+            <td>https://<span class="hostName"></span>/api/touroperator/getTourOperatorById/:id</td>
+            <td class="module14">Tour Operator</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Get Tour Operator By Id</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/touroperator/getTourOperatorById/:id
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>id</td>
+                    <td>string</td>
+                    <td>Tour Operator's id</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Remove Tour Operator By Id-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/touroperator/removeTourOperatorById/:id</td>
+            <td class="module14">Tour Operator</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Post Tour Operator By Id</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/touroperator/removeTourOperatorById/:id
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>id</td>
+                    <td>string</td>
+                    <td>Tour Operator's id</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Get all Tour Operators-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/touroperator/getTourOperators</td>
+            <td class="module14">Tour Operators</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Get All Tour Operators</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/touroperator/getTourOperators
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>limit</td>
+                    <td>string</td>
+                    <td>Limit value for paggination</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>pageCount</td>
+                    <td>string</td>
+                    <td>Page counter value for paggination</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+        
+        <!-- To Add New Property -->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/property/addProperty</td>
+            <td class="module15">Property</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Add new Property</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/property/addProperty</p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>name</td>
+                    <td>string</td>
+                    <td>Property Name</td>
+                </tr>
+                <tr></tr>
+                
+                <tr>
+                    <td>city</td>
+                    <td>string</td>
+                    <td>City</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>country</td>
+                    <td>string</td>
+                    <td>Country</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>rating</td>
+                    <td>string</td>
+                    <td>Rating</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>lowRate</td>
+                    <td>string</td>
+                    <td>Low rate value</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>highRate</td>
+                    <td>string</td>
+                    <td>High rate value</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>propertyType</td>
+                    <td>string</td>
+                    <td>Property type</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>propertyImages</td>
+                    <td>string</td>
+                    <td>Property images</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>propertyAmenities</td>
+                    <td>string</td>
+                    <td>Proeprty amenities</td>
+                </tr>
+                <tr></tr>
+                
+            </table>
+        </td>
+
+        <!-- To Update Property -->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/property/updatePropertyById/:id</td>
+            <td class="module15">Property</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Update Property</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/property/updatePropertyById/:d</p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>name</td>
+                    <td>string</td>
+                    <td>Property Name</td>
+                </tr>
+                <tr></tr>
+                
+                <tr>
+                    <td>city</td>
+                    <td>string</td>
+                    <td>City</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>country</td>
+                    <td>string</td>
+                    <td>Country</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>rating</td>
+                    <td>string</td>
+                    <td>Rating</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>lowRate</td>
+                    <td>string</td>
+                    <td>Low rate value</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>highRate</td>
+                    <td>string</td>
+                    <td>High rate value</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>propertyType</td>
+                    <td>string</td>
+                    <td>Property type</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>propertyImages</td>
+                    <td>string</td>
+                    <td>Property images</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>propertyAmenities</td>
+                    <td>string</td>
+                    <td>Proeprty amenities</td>
+                </tr>
+                <tr></tr>
+
+            </table>
+        </td>
+
+        <!--To Get Property By Id-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="get">GET</td>
+            <td>https://<span class="hostName"></span>/api/property/getPropertyById/:id</td>
+            <td class="module15">Property</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Get Property By Id</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/property/getPropertyById/:id
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>id</td>
+                    <td>string</td>
+                    <td>Property's id</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Remove Property By Id-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/property/removePropertyById/:id</td>
+            <td class="module15">Property</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Post Property By Id</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/property/removePropertyById/:id
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>id</td>
+                    <td>string</td>
+                    <td>Property's id</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Get all Properties-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/property/getProperties</td>
+            <td class="module15">Properties</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Get All Properties</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/property/getProperties
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>limit</td>
+                    <td>string</td>
+                    <td>Limit value for paggination</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>pageCount</td>
+                    <td>string</td>
+                    <td>Page counter value for paggination</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!-- To Add New Airline -->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/airline/addAirline</td>
+            <td class="module16">Airline</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Add new Airline</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/airline/addAirline</p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>name</td>
+                    <td>string</td>
+                    <td>Name of airline (Required)</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>IATA</td>
+                    <td>string</td>
+                    <td>IATA</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>ICAO</td>
+                    <td>string</td>
+                    <td>ICAO</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>callSign</td>
+                    <td>string</td>
+                    <td>Call sign</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>alias</td>
+                    <td>string</td>
+                    <td>Alias name</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>country</td>
+                    <td>string</td>
+                    <td>Country</td>
+                </tr>
+                <tr></tr>
+                
+            </table>
+        </td>
+
+        <!-- To Update Airline -->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/airline/updateAirlineById/:id</td>
+            <td class="module16">Airline</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Update Airline</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/airline/updateAirlineById/:d</p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>name</td>
+                    <td>string</td>
+                    <td>Name of airline (Required)</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>IATA</td>
+                    <td>string</td>
+                    <td>IATA</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>ICAO</td>
+                    <td>string</td>
+                    <td>ICAO</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>callSign</td>
+                    <td>string</td>
+                    <td>Call sign</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>alias</td>
+                    <td>string</td>
+                    <td>Alias name</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>country</td>
+                    <td>string</td>
+                    <td>Country</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Get Airline By Id-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="get">GET</td>
+            <td>https://<span class="hostName"></span>/api/airline/getAirlineById/:id</td>
+            <td class="module16">Airline</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Get Airline By Id</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/airline/getAirlineById/:id
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>id</td>
+                    <td>string</td>
+                    <td>Airline's id</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Remove Airline By Id-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/airline/removeAirlineById/:id</td>
+            <td class="module16">Airline</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Post Airline By Id</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/airline/removeAirlineById/:id
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>id</td>
+                    <td>string</td>
+                    <td>Airline's id</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Get all Airlines-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/airline/getAirlines</td>
+            <td class="module16">Airline</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Get All Airlines</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/airline/getAirlines
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>limit</td>
+                    <td>string</td>
+                    <td>Limit value for paggination</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>pageCount</td>
+                    <td>string</td>
+                    <td>Page counter value for paggination</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+        
+        <!-- To Add New Cruise Lines -->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/cruiseline/addCruiseLine</td>
+            <td class="module17">Cruise Lines</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Add new Cruise Lines</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/cruiseline/addCruiseLine</p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>name</td>
+                    <td>string</td>
+                    <td>Name of Cruise Line (Required)</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>ships</td>
+                    <td>number</td>
+                    <td>Ships</td>
+                </tr>
+                <tr></tr>
+                
+            </table>
+        </td>
+
+        <!-- To Update Cruise Lines -->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/cruiseline/updateCruiseLineById/:id</td>
+            <td class="module17">Cruise Lines</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Update Cruise Lines</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/cruiseline/updateCruiseLineById/:d</p>
+            <h5>Parameters :</h5>
+            <table>
+                 <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>name</td>
+                    <td>string</td>
+                    <td>Name of Cruise Line (Required)</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>ships</td>
+                    <td>number</td>
+                    <td>Ships</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Get Cruise Lines By Id-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="get">GET</td>
+            <td>https://<span class="hostName"></span>/api/cruiseline/getCruiseLineById/:id</td>
+            <td class="module17">Cruise Lines</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Get Cruise Lines By Id</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/cruiseline/getCruiseLineById/:id
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>id</td>
+                    <td>string</td>
+                    <td>Cruise Line's id</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Remove Cruise Lines By Id-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/cruiseline/removeCruiseLineById/:id</td>
+            <td class="module17">Cruise Lines</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Post Cruise Lines By Id</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/cruiseline/removeCruiseLineById/:id
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>id</td>
+                    <td>string</td>
+                    <td>Cruise Line's id</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Get all Cruise Lines-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/cruiseline/getCruiseLines</td>
+            <td class="module17">Cruise Lines</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Get All Cruise Lines</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/cruiseline/getCruiseLines
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>limit</td>
+                    <td>string</td>
+                    <td>Limit value for paggination</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>pageCount</td>
+                    <td>string</td>
+                    <td>Page counter value for paggination</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!-- To Add New Tour -->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/tour/addTour</td>
+            <td class="module18">Tour</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Add new Tour</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/tour/addTour</p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>tourName</td>
+                    <td>string</td>
+                    <td>Tour Name (Required)</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>city</td>
+                    <td>string</td>
+                    <td>City of tour</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>country</td>
+                    <td>string</td>
+                    <td>Coutry of tour</td>
+                </tr>
+                <tr></tr>
+                
+            </table>
+        </td>
+
+        <!-- To Update Tour -->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/tour/updateTourById/:id</td>
+            <td class="module18">Tour</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Update Tour</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/tour/updateTourById/:d</p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>tourName</td>
+                    <td>string</td>
+                    <td>Tour Name (Required)</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>city</td>
+                    <td>string</td>
+                    <td>City of tour</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>country</td>
+                    <td>string</td>
+                    <td>Coutry of tour</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Get Tour By Id-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="get">GET</td>
+            <td>https://<span class="hostName"></span>/api/tour/getTourById/:id</td>
+            <td class="module18">Tour</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Get Tour By Id</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/tour/getTourById/:id
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>id</td>
+                    <td>string</td>
+                    <td>Tour's id</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Remove Tour By Id-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/tour/removeTourById/:id</td>
+            <td class="module18">Tour</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Post Tour By Id</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/tour/removeTourById/:id
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>id</td>
+                    <td>string</td>
+                    <td>Tour's id</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Get all Tours-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/tour/getTours</td>
+            <td class="module18">Tour</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Get All Tours</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/tour/getTours
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>limit</td>
+                    <td>string</td>
+                    <td>Limit value for paggination</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>pageCount</td>
+                    <td>string</td>
+                    <td>Page counter value for paggination</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+        
+        <!-- To Add New Setting -->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/setting/addSetting</td>
+            <td class="module18">Setting</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Add new Setting</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/setting/addSetting</p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>settingKey</td>
+                    <td>string</td>
+                    <td>Setting key (Required)</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>settingValues</td>
+                    <td>[Object]</td>
+                    <td>Setting values</td>
+                </tr>
+                <tr></tr>
+                
+            </table>
+        </td>
+
+        <!-- To Update Setting -->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/setting/updateSettingById/:id</td>
+            <td class="module18">Setting</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Update Setting</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/setting/updateSettingById/:d</p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>tourName</td>
+                    <td>string</td>
+                    <td>Tour Name (Required)</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>city</td>
+                    <td>string</td>
+                    <td>City of tour</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>country</td>
+                    <td>string</td>
+                    <td>Coutry of tour</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Get Setting By Id-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="get">GET</td>
+            <td>https://<span class="hostName"></span>/api/setting/getSettingById/:id</td>
+            <td class="module18">Setting</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Get Setting By Id</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/setting/getSettingById/:id
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>id</td>
+                    <td>string</td>
+                    <td>Setting's id</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Remove Setting By Id-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/setting/removeSettingById/:id</td>
+            <td class="module18">Setting</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Post Setting By Id</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/setting/removeSettingById/:id
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                    <td>id</td>
+                    <td>string</td>
+                    <td>Setting's id</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+        <!--To Get all Settings-->
+        <tr class="api-row">
+            <td>#</td>
+            <td class="post">POST</td>
+            <td>https://<span class="hostName"></span>/api/setting/getSettings</td>
+            <td class="module18">Setting</td>
+        </tr>
+        <td colspan="3">
+            <h5>Description :</h5>
+            <p>To Get All Settings</p>
+            <h5>Friendly Url :</h5>
+            <p>https://<span class="hostName"></span>/api/setting/getSettings
+            </p>
+            <h5>Parameters :</h5>
+            <table>
+                <tr class="liu">
+                    <td>Parameter Name</td>
+                    <td>DataType</td>
+                    <td>Description</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>limit</td>
+                    <td>string</td>
+                    <td>Limit value for paggination</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>pageCount</td>
+                    <td>string</td>
+                    <td>Page counter value for paggination</td>
+                </tr>
+                <tr></tr>
+            </table>
+        </td>
+
+    </table>
+</div>
+
+</html>

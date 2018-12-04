@@ -1,0 +1,6 @@
+{
+	"api_server_port": 8088,
+	"SENDGRID_USER": "GirishRathod",
+ 	"SENDGRID_PASSWORD": "sendgrid@999"
+
+}

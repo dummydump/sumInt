@@ -1,0 +1,406 @@
+/*
+ *	Module dependencies
+ */
+var express = require('express');
+var http = require('http');
+var https = require('https');
+var path = require('path');
+var util = require('util');
+var bodyParser = require('body-parser');
+var jsonParser = bodyParser.json();
+var logger = require('morgan');
+var mongoose = require('mongoose');
+var database = require('./config/database'); // Get configuration file
+var static = require('serve-static');
+var app = express();
+var routes = require('./routes');
+var session = require('client-sessions');
+var multipart = require('connect-multiparty');
+var methodOverride = require('method-override');
+var jwt = require('jsonwebtoken');
+var cors = require('cors');
+var fs = require('fs');
+
+var config = require('./config/config.json');
+var CONSTANT = require('./config/constant.json');
+
+/*
+var CUP_CAKES_CRM_DB_USERNAME = process.env.CUP_CAKES_CRM_DB_USERNAME;
+var CUP_CAKES_CRM_DB_PASS = process.env.CUP_CAKES_CRM_DB_PASS;
+var CUP_CAKES_CRM_ENV = process.env.CUP_CAKES_CRM_ENV;
+*/
+var CUP_CAKES_CRM_DB_USERNAME = 'cupcakecrmdbuser';
+var CUP_CAKES_CRM_DB_PASS = 'P4ZprjcCbkKxFmGVAwZa5GAaD4Cy93';
+var CUP_CAKES_CRM_ENV = 'staging';
+
+
+app.set('port', process.env.PORT || config.api_server_port);
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+app.set('superSecret', CONSTANT.superSecret);
+app.use(static(path.join(__dirname, 'public')));
+app.use(multipart());
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(methodOverride());
+app.use(cors());
+
+// Add headers
+app.use(function(req, res, next) {
+
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    // res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type,Authorization ,Accept');
+
+    res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
+
+    // res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type,Authorization ,Accept');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+
+    // Pass to next layer of middleware
+    next();
+});
+
+
+// authentication
+
+// get an instance of the router for api routes
+var apiRoutes = express.Router();
+
+// route middleware to verify a token
+apiRoutes.use(function(req, res, next) {
+
+    // check header or url parameters or post parameters for token
+    var token = req.body.token || req.query.token || req.headers.authorization;
+
+    var requestedPath = req.path;
+
+    if (requestedPath === '/user/getUserToken') {
+        next();
+        // decode token
+    } else if (token) {
+        token = token.split(" ")[1];
+
+        // console.log('token ' + token);
+        // verifies secret and checks exp
+        //     if(token != CONSTANT.authToken){
+        //         return res.json({ success: 0, message: 'Failed to authenticate token.' });
+        //     } else {
+        //         next();
+        //    }
+        jwt.verify(token, app.get('superSecret'), function(err, decoded) {
+            if (err) {
+                return res.json({ success: 0, message: 'Failed to authenticate token.' });
+            } else {
+                // if everything is good, save to request for use in other routes
+                req.decoded = decoded;
+                next();
+            }
+        });
+    } else {
+        // if there is no token
+        // return an error
+        return res.status(403).send({
+            success: 0,
+            message: 'No token provided.'
+        });
+    }
+});
+
+app.use('/api', apiRoutes);
+
+
+/*-----------------------All Routes List---------------------------------*/
+var commonroute = require('./routes/commonroute');
+var clientroute = require('./routes/clientroute');
+var relativeroute = require('./routes/relativeroute');
+var userroute = require('./routes/userroute');
+var roleroute = require('./routes/roleroute');
+var moduleroute = require('./routes/moduleroute');
+var triproute = require('./routes/triproute');
+var itineraryroute = require('./routes/itineraryroute');
+var shiproute = require('./routes/shiproute');
+var tripactivityroute = require('./routes/tripactivityroute');
+var tripdetailsroute = require('./routes/tripdetailsroute');
+var bookingroute = require('./routes/bookingroute');
+var roomroute = require('./routes/roomroute');
+var paymentroute = require('./routes/paymentroute');
+var documentroute = require('./routes/documentroute');
+var noteroute = require('./routes/noteroute');
+var eventroute = require('./routes/eventroute');
+var workspaceextensionroute = require('./routes/workspaceextensionroute');
+var emailautomationroute = require('./routes/emailautomationroute');
+var templateroute = require('./routes/templateroute');
+var taskroute = require('./routes/taskroute');
+var touroperatorroute = require('./routes/touroperatorroute');
+var propertyroute = require('./routes/propertyroute');
+var airlineroute = require('./routes/airlineroute');
+var cruiselineroute = require('./routes/cruiselineroute');
+var tourroute = require('./routes/tourroute');
+var settingroute = require('./routes/settingroute');
+
+/*------------------------------Common Routes--------------------------*/
+app.get('/isValidId', commonroute.isValidId);
+
+/*--------------------------- Client Routes------------------------------*/
+app.post('/api/client/addClient', clientroute.addClient); // 
+app.post('/api/client/getClientById/:id', clientroute.getClientById); //
+app.post('/api/client/updateClientById/:id', clientroute.updateClientById); //
+app.post('/api/client/removeClientById/:id', clientroute.removeClientById); //
+app.post('/api/client/getClients', clientroute.getClients); //
+app.post('/api/client/importClient', clientroute.importClient); //
+app.post('/api/client/getAllClients', clientroute.getAllClients); //
+app.post('/client/getClientToken', clientroute.getClientToken); //
+
+/*--------------------------- Relative Routes------------------------------*/
+app.post('/api/relative/addRelative', relativeroute.addRelative); // 
+app.post('/api/relative/updateRelativeById/:id', relativeroute.updateRelativeById); // 
+app.post('/api/relative/removeRelativeById/:id', relativeroute.removeRelativeById); // 
+app.post('/api/relative/getRelationsByClientId', relativeroute.getRelativesByClientId); //
+
+/*--------------------------- User Routes------------------------------*/
+app.post('/user/getUserToken', userroute.getUserToken); // 
+app.post('/api/user/addUser', userroute.addUser); // 
+app.get('/api/user/getUserById/:id', userroute.getUserById); //
+app.post('/api/user/updateUserById/:id', userroute.updateUserById); //
+app.post('/api/user/removeUserById/:id', userroute.removeUserById); //
+app.post('/api/user/getUsers', userroute.getUsers); //
+app.post('/api/user/getAgents', userroute.getAgents); //
+
+/*--------------------------- Role Routes------------------------------*/
+app.post('/api/role/addRole', roleroute.addRole); // 
+app.get('/api/role/getRoleById/:id', roleroute.getRoleById); //
+app.post('/api/role/updateRoleById/:id', roleroute.updateRoleById); //
+app.post('/api/role/removeRoleById/:id', roleroute.removeRoleById); //
+app.post('/api/role/getRoles', roleroute.getRoles); //
+
+/*--------------------------- Module Routes------------------------------*/
+app.post('/api/module/addModule', moduleroute.addModule); // 
+app.get('/api/module/getModuleById/:id', moduleroute.getModuleById); //
+app.post('/api/module/updateModuleById/:id', moduleroute.updateModuleById); //
+app.post('/api/module/removeModuleById/:id', moduleroute.removeModuleById); //
+app.post('/api/module/getModules', moduleroute.getModules); //
+
+/*--------------------------- Trip Routes------------------------------*/
+app.post('/api/trip/addTrip', triproute.addTrip); // 
+app.post('/api/trip/getTripById/:id', triproute.getTripById); //
+app.post('/api/trip/updateTripById/:id', triproute.updateTripById); //
+app.post('/api/trip/removeTripById/:id', triproute.removeTripById); //
+app.post('/api/trip/getTrips', triproute.getTrips); //
+app.post('/api/trip/getTripCountByClientId/:clientId', triproute.getTripsCountByClientId); //
+app.post('/api/trip/sendMail', triproute.sendMail); //
+app.post('/api/trip/downloadPDF', triproute.downloadPDF); //
+
+/*--------------------------- Itinerary Routes------------------------------*/
+app.post('/api/itinerary/addItinerary', itineraryroute.addItinerary); // 
+app.get('/api/itinerary/getItineraryById/:id', itineraryroute.getItineraryById); //
+app.get('/api/itinerary/getItineraryByTripId/:tripId', itineraryroute.getItineraryByTripId); //
+app.post('/api/itinerary/updateItineraryById/:id', itineraryroute.updateItineraryById); //
+app.post('/api/itinerary/removeItineraryById/:id', itineraryroute.removeItineraryById); //
+app.post('/api/itinerary/getItineraries', itineraryroute.getItineraries); //
+
+
+/*--------------------------- TripActivity Routes------------------------------*/
+app.post('/api/tripactivity/addTripActivity', tripactivityroute.addTripActivity); // 
+app.get('/api/tripactivity/getTripActivityById/:id', tripactivityroute.getTripActivityById); //
+app.post('/api/tripactivity/updateTripActivityById/:id', tripactivityroute.updateTripActivityById); //
+app.post('/api/tripactivity/removeTripActivityById/:id', tripactivityroute.removeTripActivityById); //
+app.post('/api/tripactivity/getTripActivities', tripactivityroute.getTripActivities); //
+app.post('/api/tripactivity/getAllTripActivities', tripactivityroute.getAllTripActivities); //
+
+/*--------------------------- Booking Routes------------------------------*/
+app.post('/api/booking/addBooking', bookingroute.addBooking); // 
+app.get('/api/booking/getBookingById/:id', bookingroute.getBookingById); //
+app.post('/api/booking/updateBookingById/:id', bookingroute.updateBookingById); //
+app.post('/api/booking/removeBookingById/:id', bookingroute.removeBookingById); //
+app.post('/api/booking/getBookings', bookingroute.getBookings); //
+
+/*--------------------------- Payment Routes------------------------------*/
+app.post('/api/payment/addPayment', paymentroute.addPayment); // 
+app.get('/api/payment/getPaymentById/:id', paymentroute.getPaymentById); //
+app.post('/api/payment/updatePaymentById/:id', paymentroute.updatePaymentById); //
+app.post('/api/payment/removePaymentById/:id', paymentroute.removePaymentById); //
+app.post('/api/payment/getPayments', paymentroute.getPayments); //
+app.post('/api/payment/getAllBookingWithPayments', paymentroute.getAllBookingWithPayments); //
+
+
+/*--------------------------- Document Routes------------------------------*/
+app.post('/api/document/addDocument', documentroute.addDocument); // 
+app.get('/api/document/getDocumentById/:id', documentroute.getDocumentById); //
+app.post('/api/document/updateDocumentById/:id', documentroute.updateDocumentById); //
+app.post('/api/document/removeDocumentById/:id', documentroute.removeDocumentById); //
+app.post('/api/document/getDocuments', documentroute.getDocuments); //
+app.post('/api/document/uploadDocument/:tripId', documentroute.uploadDocument); //
+
+/*--------------------------- Note Routes------------------------------*/
+app.post('/api/note/addNote', noteroute.addNote); // 
+app.get('/api/note/getNoteById/:id', noteroute.getNoteById); //
+app.post('/api/note/updateNoteById/:id', noteroute.updateNoteById); //
+app.post('/api/note/removeNoteById/:id', noteroute.removeNoteById); //
+app.post('/api/note/getNotes', noteroute.getNotes); //
+
+/*--------------------------- Event Routes------------------------------*/
+app.post('/api/event/addEvent', eventroute.addEvent); // 
+app.get('/api/event/getEventById/:eventId', eventroute.getEventById); //
+app.get('/api/event/getEventByTripId/:tripId', eventroute.getEventByTripId); //
+app.get('/api/event/getEventBytaskId/:tripId', eventroute.getEventByTaskId); //
+app.post('/api/event/updateEventById/:eventId', eventroute.updateEventById); //
+app.post('/api/event/removeEventById/:eventId', eventroute.removeEventById); //
+app.post('/api/event/getEvents', eventroute.getEvents); //
+
+/*--------------------------- Ship Routes------------------------------*/
+app.post('/api/ship/addShip', shiproute.addShip); // 
+app.get('/api/ship/getShipById/:id', shiproute.getShipById); //
+app.post('/api/ship/updateShipById/:id', shiproute.updateShipById); //
+app.post('/api/ship/removeShipById/:id', shiproute.removeShipById); //
+app.post('/api/ship/getShips', shiproute.getShips); //
+app.post('/api/ship/getPorts', shiproute.getPorts); //
+<<<<<<< HEAD
+app.post('/api/ship/listPortsByIds',shiproute.listPortsByIds); //
+app.post('/api/ship/listShipsByIds',shiproute.listShipsByIds); //
+app.post('/api/ship/removePortById/:id',shiproute.removePortById) ;//
+app.post('/api/ship/addPort',shiproute.addPort); //
+app.get('/api/ship/getPortById/:id',shiproute.getPortById); //
+app.post('/api/ship/updatePortById/:id', shiproute.updatePortById); //
+=======
+app.post('/api/ship/listPortsByIds', shiproute.listPortsByIds); //
+app.post('/api/ship/listShipsByIds', shiproute.listShipsByIds); //
+app.post('/api/ship/removePortById/:id', shiproute.removePortById); //
+>>>>>>> fd2e893edae594cdc3cd11efb7462960ca681125
+
+
+/*--------------------------- Task Routes------------------------------*/
+app.post('/api/task/addTask', taskroute.addTask); // 
+app.get('/api/task/getTaskById/:id', taskroute.getTaskById); //
+app.post('/api/task/updateTaskById/:id', taskroute.updateTaskById); //
+app.post('/api/task/removeTaskById/:id', taskroute.removeTaskById); //
+app.post('/api/task/getTasks', taskroute.getTasks); //
+
+/*--------------------------- TourOperator Routes------------------------------*/
+app.post('/api/touroperator/addTourOperator', touroperatorroute.addTourOperator); // 
+app.get('/api/touroperator/getTourOperatorById/:id', touroperatorroute.getTourOperatorById); //
+app.post('/api/touroperator/updateTourOperatorById/:id', touroperatorroute.updateTourOperatorById); //
+app.post('/api/touroperator/removeTourOperatorById/:id', touroperatorroute.removeTourOperatorById); //
+app.post('/api/touroperator/getTourOperators', touroperatorroute.getTourOperators); //
+
+/*--------------------------- Property Routes------------------------------*/
+app.post('/api/property/addProperty', propertyroute.addProperty); // 
+app.get('/api/property/getPropertyById/:id', propertyroute.getPropertyById); //
+app.post('/api/property/updatePropertyById/:id', propertyroute.updatePropertyById); //
+app.post('/api/property/removePropertyById/:id', propertyroute.removePropertyById); //
+app.post('/api/property/getProperties', propertyroute.getProperties); //
+
+/*--------------------------- Room Routes------------------------------*/
+app.post('/api/room/addRoom', roomroute.addRoom); // 
+app.get('/api/room/getRoomById/:id', roomroute.getRoomById); //
+app.post('/api/room/removeRoomById/:id', roomroute.removeRoomById); //
+app.post('/api/room/getRooms', roomroute.getRooms); //
+
+/*--------------------------- Airline Routes------------------------------*/
+app.post('/api/airline/addAirline', airlineroute.addAirline); // 
+app.get('/api/airline/getAirlineById/:id', airlineroute.getAirlineById); //
+app.post('/api/airline/updateAirlineById/:id', airlineroute.updateAirlineById); //
+app.post('/api/airline/removeAirlineById/:id', airlineroute.removeAirlineById); //
+app.post('/api/airline/getAirlines', airlineroute.getAirlines); //
+
+/*--------------------------- CruiseLine Routes------------------------------*/
+app.post('/api/cruiseline/addCruiseLine', cruiselineroute.addCruiseLine); // 
+app.get('/api/cruiseline/getCruiseLineById/:id', cruiselineroute.getCruiseLineById); //
+app.post('/api/cruiseline/updateCruiseLineById/:id', cruiselineroute.updateCruiseLineById); //
+app.post('/api/cruiseline/removeCruiseLineById/:id', cruiselineroute.removeCruiseLineById); //
+app.post('/api/cruiseline/getCruiseLines', cruiselineroute.getCruiseLines); //
+app.post('/api/cruiseline/getAllCruiseItinerariesTitle', cruiselineroute.getAllCruiseItinerariesTitle); //
+app.post('/api/cruiseline/listCruiseLinesByIds', cruiselineroute.listCruiseLinesByIds); //
+/*--------------------------- Tour Routes------------------------------*/
+app.post('/api/tour/addTour', tourroute.addTour); // 
+app.get('/api/tour/getTourById/:id', tourroute.getTourById); //
+app.post('/api/tour/updateTourById/:id', tourroute.updateTourById); //
+app.post('/api/tour/removeTourById/:id', tourroute.removeTourById); //
+app.post('/api/tour/getTours', tourroute.getTours); //
+
+
+/*--------------------------- Setting Routes------------------------------*/
+app.post('/api/setting/addSetting', settingroute.addSetting); // 
+app.get('/api/setting/getSettingById/:id', settingroute.getSettingById); //
+app.post('/api/setting/updateSettingById/:id', settingroute.updateSettingById); //
+app.post('/api/setting/removeSettingById/:id', settingroute.removeSettingById); //
+app.post('/api/setting/getSettings', settingroute.getSettings); //
+app.post('/api/setting/getSettingByKey', settingroute.getSettingByKey); //
+
+/*--------------------------- Trip Details Routes------------------------------*/
+app.post('/api/tripdetails/addTripDetails', tripdetailsroute.addTripDetails); // 
+app.get('/api/tripdetails/getTripDetailsById/:id', tripdetailsroute.getTripDetailsById); //
+app.post('/api/tripdetails/updateTripDetailsById/:id', tripdetailsroute.updateTripDetailsById); //
+app.post('/api/tripdetails/removeTripDetailsById/:id', tripdetailsroute.removeTripDetailsById); //
+app.post('/api/tripdetails/getTripDetails', tripdetailsroute.getTripDetails); //
+
+/*--------------------------- Workspace Extensions Routes------------------------------*/
+app.post('/api/workspaceextension/addWorkspaceExtension', workspaceextensionroute.addWorkspaceExtension); // 
+app.get('/api/workspaceextension/getWorkspaceExtensionById/:id', workspaceextensionroute.getWorkspaceExtensionById); //
+app.get('/api/workspaceextension/getWorkspaceExtensionByClientId/:clientId', workspaceextensionroute.getWorkspaceExtensionByClientId); //
+app.post('/api/workspaceextension/updateWorkspaceExtensionById/:id', workspaceextensionroute.updateWorkspaceExtensionById); //
+app.post('/api/workspaceextension/removeWorkspaceExtensionById/:id', workspaceextensionroute.removeWorkspaceExtensionById); //
+app.post('/api/workspaceextension/getWorkspaceExtensions', workspaceextensionroute.getWorkspaceExtensions); //
+
+/*--------------------------- Email Automation Routes------------------------------*/
+app.post('/api/emailautomation/addEmailAutomation', emailautomationroute.addEmailAutomation); // 
+app.get('/api/emailautomation/getEmailAutomationById/:id', emailautomationroute.getEmailAutomationById); //
+app.post('/api/emailautomation/getEmailAutomationByWorkspaceExtIds', emailautomationroute.getEmailAutomationByWorkspaceExtIds); //
+app.post('/api/emailautomation/updateEmailAutomationById/:id', emailautomationroute.updateEmailAutomationById); //
+app.post('/api/emailautomation/removeEmailAutomationById/:id', emailautomationroute.removeEmailAutomationById); //
+app.post('/api/emailautomation/removeEmailAutomationByWorkExtId/:workspaceExtensionId', emailautomationroute.removeEmailAutomationByWorkExtId); //
+app.post('/api/emailautomation/getEmailAutomations', emailautomationroute.getEmailAutomations); //
+
+/*--------------------------- Template Routes------------------------------*/
+app.post('/api/template/addTemplate', templateroute.addTemplate); // 
+app.get('/api/template/getTemplateById/:id', templateroute.getTemplateById); //
+app.post('/api/template/updateTemplateById/:id', templateroute.updateTemplateById); //
+app.post('/api/template/removeTemplateById/:id', templateroute.removeTemplateById); //
+app.post('/api/template/getTemplates', templateroute.getTemplates); //
+
+app.get('/', routes.apiview);
+
+console.log('CUP_CAKES_CRM_DB_USERNAME ' + process.env.CUP_CAKES_CRM_DB_USERNAME);
+console.log('CUP_CAKES_CRM_DB_PASS ' + process.env.CUP_CAKES_CRM_DB_PASS);
+console.log('CUP_CAKES_CRM_ENV ' + process.env.CUP_CAKES_CRM_ENV);
+
+
+if (!CUP_CAKES_CRM_DB_USERNAME || !CUP_CAKES_CRM_DB_PASS || !CUP_CAKES_CRM_ENV) {
+    console.log('Database username and password and environment are not setup');
+} else {
+    //Connection with Database
+    var databaseURL = (CUP_CAKES_CRM_ENV == 'production') ? database.serverdburl : database.localdburl;
+    var mongoOpt = (CUP_CAKES_CRM_ENV == 'production') ? {
+        "server": {
+            "sslValidate": false,
+            "sslKey": fs.readFileSync('config/keys/mongodb.pem').toString(),
+            "sslCert": fs.readFileSync('config/keys/mongodb-cert.crt').toString(),
+            "ssl": true
+        },
+        "user": CUP_CAKES_CRM_DB_USERNAME,
+        "pass": CUP_CAKES_CRM_DB_PASS,
+    } : {};
+
+    console.log('databaseURL ' + databaseURL);
+    mongoose.connect(databaseURL, mongoOpt);
+
+    if (CUP_CAKES_CRM_ENV == 'production') {
+        var privateKey = fs.readFileSync('config/keys/privkey.pem').toString();
+        var certificate = fs.readFileSync('config/keys/fullchain.pem').toString();
+        https.createServer({ key: privateKey, cert: certificate }, app).listen(app.get('port'), function() {
+            console.log('Express server listening on port ' + app.get('port'));
+        });
+    } else {
+        http.createServer(app).listen(app.get('port'), function() {
+            console.log('Express server listening on port ' + app.get('port'));
+        });
+    }
+}

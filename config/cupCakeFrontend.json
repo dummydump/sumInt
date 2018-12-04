@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "cupcakefrontend",
+  "private_key_id": "8c846dc70db2a3b511dfccd164953112634f89fa",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCs33j9uFpBSTfO\ni52Zs2s99tpPJ1tAhBBLiOs7c5+LzFpR3VCLUjLIFyTvXuIA0bb2RKkvyCTNr9bm\nmXhYpyS0JiaA+iYRZwJuR899LVR9mmG5iG9FjPdfrfBpcbEA7+upZP/1Ex+bSFu3\nNMeZ+Q1O3ULKg5DSNTjTX8hvn1K4hBneqr1ohYcPos0Tm/sn14a0860ZP+nCFcnr\nJIod2myQe02HZDQx1jlhjQwAPb4S2aKLL6ldWVaJTEVmDuf0lmzNKUFb7pccBfbi\nEzdIND8Z6ti6hhGXNIXTma6xGGSXCp8YEOLicD+XHLKRU8JsoNVENSCbo+p9p2jI\nJj+eSW01AgMBAAECggEAE1NmRML7wAmt5fbAtyKSLhqvHCMztdotsiwL1BkgcHH3\ndOhvbSvSxoCj3ei3Dk1jjVNusItI5f+u4BevFwYUedk7+7Y7VD22TVrUzNMo+2Or\nYiDpA5b3PqiE1Fzj401vBIBoht7M7UChFDGf0MxBWxwsL9SWd5GAmUy/bQ8cIclf\nYRH3rtWsih3i+Vze4YW+rIlrSevp+qxHafUg7B5UYJdCg7CBT2hJIKlw3GIVHmoz\nwd6LywAX11ik3tAGZdFXqYsRcWWW/JaBA6dTLaRULIZVM2ZkS8xa7fEIN1Jhb0p3\nfMTJuiDC0c6gMFk2jMxbe3mSrK0E7zwD2cxhRG4LYQKBgQDwTfofjDmmzyVNJoXA\nPmEC+DtYqHEMNx+VzHP94HzrK5sYPevvm8g9u1U2YjMRqX1sQILAILWBI9wsGeJT\nthQ6e5DDwuYuSzrmDu3+d2HcJzwx0a/ipNTVHFSjCt2J7+Xw4oDxbjQUX+SzLNCM\nwxqH7VTxPSIlyD/cC/S6eFWYBQKBgQC4KgBzEF1MfbFv8vZjx6uDo9ac5dIQ520A\njiJxvsw8VavhHUSW14OzQISeMEZEMrw1T5L6jIDK6nYVcCH8Akc7tF4e/pbwxHER\n5whmpJFmx3oFoNGU6tatFs0wrNSbGwNjjFSK4sGCCxbfgl+kfyk+IM003SDw9A5/\nezYc1it3cQKBgQDtg6UdWXQCM+wifVjl0sIANWozDwntkO5fGV3sKN5PcyIwq8Nv\naQJaQbbPse/YHTYisQCK9clwgwkzbcIOC4Gi7E8BrrnkN+dXTJpfUZAgEYelliPK\nWDElEoN1Q2AE3mDf3oCkINDI8p8RmdHnz0+B2kqCxnHh9jNoQ0j4pce0IQKBgQCO\nchZk6ZxwpKwQ/ilr5i4YpSpDs1N3NbnO+yFTP5PzewR2G9BIqCu7A0VQoeBHscJ3\nrbPuzax0x0NMs63lodF9Mba3XI5dbmRSx5Ns6Q96IwKTxd81wysHOKK/an8L9an6\nXrmpr1ijgHZRrSLTNnQtFOwEXqGzHeL04dVqGpIGUQKBgFHUewtla6pGjNx+/ieB\nWsMFr4/9yzViwTHqQVQKFqj7ufTUKrK1/grYT6PX+Wht3LdmiPPNJW7Nvr8l/wba\n3w3DkDI8BRQfZynSV8C4BIZBbcPrcU5nufg0+Tz/cN/rrzZPQySJdtR2iVSTbCXc\njv0hW+EiByqq0P7y3uIlz8GQ\n-----END PRIVATE KEY-----\n",
+  "client_email": "service-account-for-google-cal@cupcakefrontend.iam.gserviceaccount.com",
+  "client_id": "103169228887691744136",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/service-account-for-google-cal%40cupcakefrontend.iam.gserviceaccount.com"
+}
